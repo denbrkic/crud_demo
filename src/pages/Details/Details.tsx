@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IItem } from '../../models/apiModels';
+import { IError, IItem } from '../../models/apiModels';
 import { getItemDetails } from '../../api/api';
 import { useParams } from 'react-router-dom';
 
@@ -9,7 +9,10 @@ function Details() {
         title: '',
         body: ''
     });
-    const [error, setError] = useState<string>("")
+    const [error, setError] = useState<IError>({
+        type: 'error',
+        message: ''
+    })
     const { id } = useParams()
 
 
@@ -19,7 +22,7 @@ function Details() {
                 const data = await getItemDetails(id as string);
                 setItemDetails(data)
             } catch {
-                setError('An error occured :(. Please try later.');
+                setError({ type: 'error', message: 'An error occured :(. Please try later.' });
             }            
         })();
     }, [id]);
@@ -31,7 +34,7 @@ function Details() {
                 <h2>{itemDetails.title}</h2>
                 <p>{itemDetails.body}</p>
             </div>
-            <div>{ error }</div>             
+            <div className={error.type}>{ error.message }</div>             
         </>
     )
 }

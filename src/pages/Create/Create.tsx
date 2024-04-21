@@ -1,6 +1,7 @@
-import React, { SyntheticEvent, useEffect, useState } from 'react'
-import { IItem } from '../../models/apiModels';
+import React, { SyntheticEvent, useState } from 'react'
+import { IError, IItem } from '../../models/apiModels';
 import { setItem } from '../../api/api';
+import './Create.css';
 
 function Create() {
 
@@ -8,20 +9,26 @@ function Create() {
         title: '',
         body: '' 
     });
-    const [error, setError] = useState<string>("");
+    const [error, setError] = useState<IError>({
+        type: 'error',
+        message: ''
+    });
 
     async function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
-        setError('');
+        setError({
+            type: 'error',
+            message: ''
+        });
         try {
             const response = await setItem({title: formData['title'], body: formData['body']});
-            setError(`Your new item with the title "${response.title}" successfully added.`);
+            setError({ type: 'success', message: `Your new item with the title "${response.title}" successfully added.` });
             setFormData({
                 title: '',
                 body: '' 
             })
         } catch {
-            setError('An error occured :(. Please try later.');
+            setError({ type: 'error', message: 'An error occured :(. Please try later.' });
         } 
     }
 
@@ -34,7 +41,7 @@ function Create() {
                 <input id="body" name="body" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, body: e.target.value}))} value={formData['body']}/>
                 <button type="submit">Add Item</button>
             </form>
-            <div>{ error }</div>
+            <div className={error.type}>{ error.message }</div>
         </>
     )
 }

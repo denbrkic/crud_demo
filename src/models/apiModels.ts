@@ -6,3 +6,8 @@ export interface IItem {
 }
 
 export interface IItems extends Array<IItem>{}
+
+export interface IError {
+    type: 'error' | 'success';
+    message: string;
+}
