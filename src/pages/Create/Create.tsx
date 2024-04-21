@@ -32,7 +32,7 @@ function Create() {
         }
         try {
             await setItem({title: formData['title'], body: formData['body']});
-            setError({ type: 'success', message: 'The new item was successfully added.' });
+            setError({ type: 'success', message: 'The new item was successfully saved.' });
             setFormData({
                 title: '',
                 body: '' 
