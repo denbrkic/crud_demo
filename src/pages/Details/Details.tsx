@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { IError, IItem } from '../../models/apiModels';
 import { getItemDetails } from '../../api/api';
 import { useParams } from 'react-router-dom';
+import './Details.css';
 
 function Details() {
 
