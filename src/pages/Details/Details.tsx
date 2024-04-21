@@ -28,6 +28,7 @@ function Details() {
             try {
                 const data = await getItemDetails(id as string);
                 setItemDetails(data)
+                setFormData(data)
             } catch {
                 setError({ type: 'error', message: 'An error occured :(. Please try later.' });
             }            
@@ -55,12 +56,9 @@ function Details() {
     async function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
         try {
+            setError(errorInitialValue);
             await updateItem({ id: Number(id), title: formData['title'], body: formData['body'] });
             setError({ type: 'success', message: 'The item was successfully updated.' });
-            setFormData({
-                title: '',
-                body: '' 
-            });
         } catch {
             setError({ type: 'error', message: 'An error occured :(. Please try later.' });
         }
