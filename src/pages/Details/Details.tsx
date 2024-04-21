@@ -47,6 +47,7 @@ function Details() {
 
     async function handleDelete() {
         try {
+            setError(errorInitialValue);
             await deleteItem(id as string);
             timeoutId = setTimeout(() => {
                 window.location.href = '/';
