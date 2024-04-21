@@ -6,18 +6,21 @@ import { useParams } from 'react-router-dom';
 function Details() {
 
     const [itemDetails, setItemDetails] = useState<IItem>({
-        userId: 1,
-        id: 1,
         title: '',
         body: ''
     });
+    const [error, setError] = useState<string>("")
     const { id } = useParams()
 
 
     useEffect(() => {
         (async () => {
-            const data = await getItemDetails(id as string);
-            setItemDetails(data)
+            try {
+                const data = await getItemDetails(id as string);
+                setItemDetails(data)
+            } catch {
+                setError('An error occured :(. Please try later.');
+            }            
         })();
     }, [id]);
 
@@ -27,7 +30,8 @@ function Details() {
             <div>
                 <h2>{itemDetails.title}</h2>
                 <p>{itemDetails.body}</p>
-            </div>             
+            </div>
+            <div>{ error }</div>             
         </>
     )
 }

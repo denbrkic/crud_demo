@@ -7,18 +7,25 @@ import { Link } from 'react-router-dom';
 function HomePage() {
 
     const [items, setItems] = useState<IItems>([]);
+    const [error, setError] = useState<string>("");
 
-    useEffect(() => {
+    useEffect(() => {        
         (async () => {
-            const data = await getAllItems();
-            setItems(data)
+            try {
+                setError('');
+                const data = await getAllItems();
+                setItems(data);
+            } catch {
+                setError('An error occured :(. Please try later.');
+            }            
         })();
     }, []);
 
     return (
         <>            
             <h1>List Of Items:</h1>
-            { items.map((item) => <Link to={`/details/${item.id}`} key={item.id} className="item"><h2>{item.title}</h2><p>{item.body}</p></Link>) }              
+            { items.map((item) => <Link to={`/details/${item.id}`} key={item.id} className="item"><h2>{item.title}</h2><p>{item.body}</p></Link>) }
+            <div>{ error }</div>              
         </>
     )
 }
