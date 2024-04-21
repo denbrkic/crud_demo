@@ -11,7 +11,7 @@ function MainLayout({ children }: IMainLayout) {
     return (
         <div className="container">
             <header className='main-header'>
-                <Typography variant="h1" gutterBottom>Simple CRUD Application</Typography>
+                <Typography variant="h1" gutterBottom style={{marginBottom: '0'}}>Simple CRUD Application</Typography>
                 <nav className="main-nav">
                     <ul>
                         <li><Link to="/"><Typography variant="button" gutterBottom>Home</Typography></Link></li>
@@ -23,7 +23,7 @@ function MainLayout({ children }: IMainLayout) {
                 {children ? children : <Outlet />}
             </main>
             <footer className="main-footer">
-                <Typography variant="body2">Setvi ©, All rights reserved</Typography>
+                <Typography variant="body2"><span style={{color: '#1976d2', background: '#bad6f2'}}>Setvi ©</span>, All rights reserved</Typography>
             </footer>
         </div>
     );

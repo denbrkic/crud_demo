@@ -64,6 +64,9 @@ function Details() {
             setError(errorInitialValue);
             await updateItem({ id: Number(id), title: formData['title'], body: formData['body'] });
             setError({ type: 'success', message: 'The item was successfully updated.' });
+            timeoutId = setTimeout(() => {
+                window.location.href = '/';
+            }, 3000);
         } catch {
             setError({ type: 'error', message: 'An error occured :(. Please try later.' });
         }
@@ -71,17 +74,17 @@ function Details() {
 
 
     return (
-        <>            
+        <div className="details-container">            
             <Typography variant="h2" gutterBottom>Item Details:</Typography>
             <Box component="section" sx={{ p: 2, border: '1px dashed grey' }} className="content">
                 <Typography variant="h3" gutterBottom>{itemDetails.title}</Typography>
                 <Typography variant="body1" gutterBottom>{itemDetails.body}</Typography>
             </Box>
             <div>
-                <Button variant="contained" style={{marginRight: '20px'}} onClick={handleDelete}>Delete</Button>
+                { !isUpdating && <Button variant="contained" style={{marginRight: '20px'}} onClick={handleDelete}>Delete</Button> }
                 { isUpdating ? (
                     <div>
-                        <form onSubmit={handleSubmit} style={{margin: '40px 0'}}>
+                        <form onSubmit={handleSubmit} style={{margin: '40px 0', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Title" variant="outlined" id="title" name="title" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, title: e.target.value}))} value={formData['title']} />
                             <br/>
                             <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Body" variant="outlined" multiline id="body" name="body" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, body: e.target.value}))} value={formData['body']}/>
@@ -89,10 +92,10 @@ function Details() {
                             <Button variant="contained" type="submit">Update</Button>
                         </form>
                     </div>
-                ) : <Button variant="contained" onClick={() => setIsUpdating(true)}>Update</Button> }
+                ) : <Button variant="contained" onClick={() => setIsUpdating(true)} >Update</Button> }
             </div>            
             <Typography style={{marginTop: '20px'}} variant="body2" gutterBottom className={error.type}>{ error.message }</Typography>             
-        </>
+        </div>
     )
 }
 

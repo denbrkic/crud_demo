@@ -27,7 +27,7 @@ function Create() {
     async function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
         if (formData['title'].trim() === '' || formData['body'].trim() === '') {
-            setError({ type: 'error', message: 'Please enter your title and body for your post.' });
+            setError({ type: 'error', message: 'Please add the title and body for your post.' });
             return;
         }
         try {
@@ -46,8 +46,8 @@ function Create() {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Title" variant="outlined" id="title" name="title" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, title: e.target.value}))} value={formData['title']} />
                 <br/>
                 <TextField style={{marginBottom: '20px', minWidth: '500px'}} maxRows={4} label="Body" variant="outlined" multiline id="body" name="body" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, body: e.target.value}))} value={formData['body']}/>
@@ -55,7 +55,7 @@ function Create() {
                 <Button variant="contained" type="submit">Save</Button>
             </form>
             <Typography style={{marginTop: '20px'}} variant="body2" gutterBottom className={error.type}>{ error.message }</Typography>
-        </>
+        </div>
     )
 }
 
