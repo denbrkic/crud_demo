@@ -84,7 +84,7 @@ function Details() {
                 { !isUpdating && <Button variant="contained" style={{marginRight: '20px'}} onClick={handleDelete}>Delete</Button> }
                 { isUpdating ? (
                     <div>
-                        <form onSubmit={handleSubmit} style={{margin: '40px 0', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                        <form onSubmit={handleSubmit} style={{margin: '40px 0 0 0', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Title" variant="outlined" id="title" name="title" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, title: e.target.value}))} value={formData['title']} />
                             <br/>
                             <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Body" variant="outlined" multiline id="body" name="body" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, body: e.target.value}))} value={formData['body']}/>
