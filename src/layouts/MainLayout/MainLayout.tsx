@@ -19,7 +19,7 @@ function MainLayout({ children }: IMainLayout) {
                     </ul>
                 </nav>                
             </header>
-            <main>      
+            <main className="main-content">      
                 {children ? children : <Outlet />}
             </main>
             <footer className="main-footer">

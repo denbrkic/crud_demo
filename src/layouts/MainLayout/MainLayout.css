@@ -24,12 +24,18 @@
     padding: 20px;
 }
 
+.main-content {
+    padding: 20px;
+}
+
 .main-header {
     margin-bottom: 100px;
+    background-color: #bad6f2;
+    padding: 20px;
 }
 
 .main-footer {
     margin-top: 200px;
     padding: 10px 20px;
-    background: #dddddd;
+    background-color: #bad6f2;
 }
