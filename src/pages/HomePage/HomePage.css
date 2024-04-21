@@ -1,6 +1,9 @@
 .item {
-    border: 1px solid black;
+    color: #000000;
+    display: block;
     margin-bottom: 20px;
     padding: 20px;
     cursor: pointer;
+    text-decoration: none;
+    border: 1px solid black;
 }
