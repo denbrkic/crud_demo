@@ -24,15 +24,15 @@ function Details() {
         body: '' 
     });
     const [isUpdating, setIsUpdating] = useState<boolean>(false);
-    const { id } = useParams()
+    const { id } = useParams();
     let timeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
 
     useEffect(() => {
         (async () => {
             try {
                 const data = await getItemDetails(id as string);
-                setItemDetails(data)
-                setFormData(data)
+                setItemDetails(data);
+                setFormData(data);
             } catch {
                 setError({ type: 'error', message: 'An error occured :(. Please try later.' });
             }            
@@ -84,7 +84,7 @@ function Details() {
                             <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Title" variant="outlined" id="title" name="title" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, title: e.target.value}))} value={formData['title']} />
                             <br/>
                             <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Body" variant="outlined" multiline id="body" name="body" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, body: e.target.value}))} value={formData['body']}/>
-                          <br/>
+                            <br/>
                             <Button variant="contained" type="submit">Update</Button>
                         </form>
                     </div>
@@ -95,4 +95,4 @@ function Details() {
     )
 }
 
-export default Details
+export default Details;

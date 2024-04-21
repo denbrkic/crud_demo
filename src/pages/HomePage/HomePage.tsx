@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { getAllItems } from '../../api/api';
 import { IError, IItems } from '../../models/apiModels';
 import './HomePage.css';
@@ -36,4 +36,4 @@ function HomePage() {
     )
 }
 
-export default HomePage
+export default HomePage;

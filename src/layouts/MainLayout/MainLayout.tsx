@@ -29,4 +29,4 @@ function MainLayout({ children }: IMainLayout) {
     );
 }
 
-export default MainLayout
+export default MainLayout;

@@ -1,7 +1,6 @@
-import React, { SyntheticEvent, useState, useEffect } from 'react'
+import React, { SyntheticEvent, useState, useEffect } from 'react';
 import { IError, IItem } from '../../models/apiModels';
 import { setItem } from '../../api/api';
-import './Create.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
