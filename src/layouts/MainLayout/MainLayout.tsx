@@ -1,5 +1,7 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import './MainLayout.css';
 
 interface IMainLayout {
     children?: React.ReactNode | React.ReactNode[] | string;
@@ -7,23 +9,23 @@ interface IMainLayout {
 
 function MainLayout({ children }: IMainLayout) {
     return (
-        <>
-            <header>
-                <div>Simple CRUD Application</div>
-                <ul>
+        <div className="container">
+            <header className='main-header'>
+                <Typography variant="h1" gutterBottom>Simple CRUD Application</Typography>
+                <nav className="main-nav">
                     <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/create">Create</Link></li>
+                        <li><Link to="/"><Typography variant="button" gutterBottom>Home</Typography></Link></li>
+                        <li><Link to="/create"><Typography variant="button" gutterBottom>Create</Typography></Link></li>
                     </ul>
-                </ul>
+                </nav>                
             </header>
-            <main>                
+            <main>      
                 {children ? children : <Outlet />}
             </main>
-            <footer>
-                Setvi ©, All rights reserved
+            <footer className="main-footer">
+                <Typography variant="body2">Setvi ©, All rights reserved</Typography>
             </footer>
-        </>
+        </div>
     );
 }
 

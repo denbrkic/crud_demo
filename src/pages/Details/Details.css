@@ -5,3 +5,9 @@
 .success {
     color: #22bb33;
 }
+
+.content {
+    margin-bottom: 60px;
+    border: 1px solid black;
+    padding: 20px;
+}

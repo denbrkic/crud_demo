@@ -1,11 +1,13 @@
-.item {
-    color: #000000;
+.item {    
     display: block;
     margin-bottom: 20px;
     padding: 20px;
-    cursor: pointer;
+    cursor: pointer;   
+}
+
+.item a {
+    color: #000000;
     text-decoration: none;
-    border: 1px solid black;
 }
 
 .error {

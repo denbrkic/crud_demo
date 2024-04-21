@@ -3,6 +3,10 @@ import { IError, IItem } from '../../models/apiModels';
 import { deleteItem, getItemDetails, updateItem } from '../../api/api';
 import { useParams } from 'react-router-dom';
 import './Details.css';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 
 function Details() {
 
@@ -67,26 +71,26 @@ function Details() {
 
     return (
         <>            
-            <h1>Item Details:</h1>
+            <Typography variant="h2" gutterBottom>Item Details:</Typography>
+            <Box component="section" sx={{ p: 2, border: '1px dashed grey' }} className="content">
+                <Typography variant="h3" gutterBottom>{itemDetails.title}</Typography>
+                <Typography variant="body1" gutterBottom>{itemDetails.body}</Typography>
+            </Box>
             <div>
-                <h2>{itemDetails.title}</h2>
-                <p>{itemDetails.body}</p>
-            </div>
-            <div>
-                <button onClick={handleDelete}>Delete</button>
+                <Button variant="contained" style={{marginRight: '20px'}} onClick={handleDelete}>Delete</Button>
                 { isUpdating ? (
                     <div>
-                        <form onSubmit={handleSubmit}>
-                            <label htmlFor="title">Title</label>
-                            <input id="title" name="title" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, title: e.target.value}))} value={formData['title']} />
-                            <label htmlFor='body'>Body</label>
-                            <input id="body" name="body" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, body: e.target.value}))} value={formData['body']}/>
-                            <button type="submit">Update</button>
+                        <form onSubmit={handleSubmit} style={{margin: '40px 0'}}>
+                            <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Title" variant="outlined" id="title" name="title" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, title: e.target.value}))} value={formData['title']} />
+                            <br/>
+                            <TextField style={{marginBottom: '20px', minWidth: '500px'}} label="Body" variant="outlined" multiline id="body" name="body" type="text" onChange={(e) => setFormData((oldData) => ({...oldData, body: e.target.value}))} value={formData['body']}/>
+                          <br/>
+                            <Button variant="contained" type="submit">Update</Button>
                         </form>
                     </div>
-                ) : <button onClick={() => setIsUpdating(true)}>Update</button> }
+                ) : <Button variant="contained" onClick={() => setIsUpdating(true)}>Update</Button> }
             </div>            
-            <div className={error.type}>{ error.message }</div>             
+            <Typography style={{marginTop: '20px'}} variant="body2" gutterBottom className={error.type}>{ error.message }</Typography>             
         </>
     )
 }

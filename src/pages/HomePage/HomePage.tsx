@@ -3,6 +3,8 @@ import { getAllItems } from '../../api/api';
 import { IError, IItems } from '../../models/apiModels';
 import './HomePage.css';
 import { Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 function HomePage() {
 
@@ -27,9 +29,9 @@ function HomePage() {
 
     return (
         <>            
-            <h1>List Of Items:</h1>
-            { items.map((item) => <Link to={`/details/${item.id}`} key={item.id} className="item"><h2>{item.title}</h2><p>{item.body}</p></Link>) }
-            <div className={error.type}>{ error.message }</div>              
+            <Typography variant="h2" gutterBottom>List Of Items:</Typography>
+            { items.map((item) => <Box component="section" sx={{ p: 2, border: '1px dashed grey' }} className="item"><Link to={`/details/${item.id}`} key={item.id}><Typography variant="h3" gutterBottom>{item.title}</Typography><Typography variant="body1" gutterBottom>{item.body}</Typography></Link></Box>) }
+            <Typography variant="body2" gutterBottom className={error.type}>{ error.message }</Typography>              
         </>
     )
 }
