@@ -7,3 +7,11 @@
     text-decoration: none;
     border: 1px solid black;
 }
+
+.error {
+    color: #bb2124;
+}
+
+.success {
+    color: #22bb33;
+}

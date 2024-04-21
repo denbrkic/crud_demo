@@ -6,16 +6,17 @@ import { Link } from 'react-router-dom';
 
 function HomePage() {
 
-    const [items, setItems] = useState<IItems>([]);
-    const [error, setError] = useState<IError>({
+    const errorInitialValue: IError = {
         type: 'error',
         message: ''
-    });
+    };
+    const [items, setItems] = useState<IItems>([]);
+    const [error, setError] = useState<IError>(errorInitialValue);
 
     useEffect(() => {        
         (async () => {
             try {
-                setError({ type: 'error', message: '' });
+                setError(errorInitialValue);
                 const data = await getAllItems();
                 setItems(data);
             } catch {

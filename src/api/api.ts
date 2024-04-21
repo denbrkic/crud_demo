@@ -36,3 +36,25 @@ export async function setItem(item: IItem) {
     return await res.json()
 }
 
+export async function deleteItem(id: string) {
+    const resource = 'posts/:id';
+    const res = await fetch(BASE_URL + resource.replace(':id', id), {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })    
+    return await res.json()
+}
+
+export async function updateItem(item: IItem) {
+    const resource = 'posts/:id';
+    const res = await fetch(BASE_URL + resource.replace(':id', String(item?.id)), {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+    })    
+    return await res.json()
+}

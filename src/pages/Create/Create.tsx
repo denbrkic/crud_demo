@@ -5,14 +5,15 @@ import './Create.css';
 
 function Create() {
 
+    const errorInitialValue: IError = {
+        type: 'error',
+        message: ''
+    };
     const [formData, setFormData] = useState<IItem>({
         title: '',
         body: '' 
     });
-    const [error, setError] = useState<IError>({
-        type: 'error',
-        message: ''
-    });
+    const [error, setError] = useState<IError>(errorInitialValue);
     let timeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
 
     useEffect(() => {
@@ -23,13 +24,9 @@ function Create() {
 
     async function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
-        setError({
-            type: 'error',
-            message: ''
-        });
         try {
-            const response = await setItem({title: formData['title'], body: formData['body']});
-            setError({ type: 'success', message: `Your new item with the title "${response.title}" successfully added.` });
+            await setItem({title: formData['title'], body: formData['body']});
+            setError({ type: 'success', message: 'The new item was successfully added.' });
             setFormData({
                 title: '',
                 body: '' 
