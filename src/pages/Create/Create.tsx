@@ -40,7 +40,7 @@ function Create() {
             });
             timeoutId = setTimeout(() => {
                 window.location.href = '/';
-            }, 5000)
+            }, 3000)
         } catch {
             setError({ type: 'error', message: 'An error occured :(. Please try later.' });
         }

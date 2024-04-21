@@ -50,7 +50,7 @@ function Details() {
             await deleteItem(id as string);
             timeoutId = setTimeout(() => {
                 window.location.href = '/';
-            }, 5000);
+            }, 3000);
             setError({ type: 'success', message: 'The item was successfully deleted.' });
         } catch {
             setError({ type: 'error', message: 'An error occured :(. Please try later.' });
