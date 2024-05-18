@@ -23,7 +23,7 @@ function MainLayout({ children }: IMainLayout) {
                 {children ? children : <Outlet />}
             </main>
             <footer className="main-footer">
-                <Typography variant="body2"><span style={{color: '#1976d2', background: '#bad6f2'}}>Setvi ©</span>, All rights reserved</Typography>
+                <Typography variant="body2"><span style={{color: '#1976d2', background: '#bad6f2'}}>Denis Brkic ©</span>, All rights reserved</Typography>
             </footer>
         </div>
     );
